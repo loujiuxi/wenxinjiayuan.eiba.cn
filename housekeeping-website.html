@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>温馨家园家政 | 专业家政服务 · 让生活更美好</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #2d8a6e;
+            --color-primary-light: #4aa88c;
+            --color-primary-dark: #1e6b54;
+            --color-orange: #f5a623;
+            --color-orange-light: #ffc266;
+            --color-blue: #4a90d9;
+            --color-blue-light: #7ab3f0;
+            --color-cream: #faf9f7;
+            --color-white: #ffffff;
+            --color-text-dark: #2c3e50;
+            --color-text-medium: #5a6c7d;
+            --color-text-light: #8a9bab;
+            --color-bg-main: #faf9f7;
+            --color-bg-card: #ffffff;
+            --font-display: 'Noto Serif SC', serif;
+            --font-body: 'Noto Sans SC', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-main);
+            color: var(--color-text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Decorative Pattern */
+        .pattern-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(45, 138, 110, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(245, 166, 35, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 5%;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-white);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+        }
+
+        .logo-text span {
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-medium);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--color-orange), var(--color-orange-light));
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-radius: 25px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 7rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: rgba(45, 138, 110, 0.1);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-dark);
+        }
+
+        .hero-title span {
+            color: var(--color-primary);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--color-text-medium);
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-top: 0.3rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(45, 138, 110, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(45, 138, 110, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 30px;
+            border: 2px solid var(--color-primary);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .hero-image-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .hero-image-item:first-child {
+            grid-row: span 2;
+        }
+
+        .hero-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .hero-image-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-image-item:first-child img {
+            height: 400px;
+        }
+
+        .hero-image-item:not(:first-child) img {
+            height: 195px;
+        }
+
+        .hero-float-card {
+            position: absolute;
+            bottom: 30px;
+            left: -30px;
+            background: var(--color-white);
+            padding: 1.2rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-orange), var(--color-orange-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .float-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--color-white);
+        }
+
+        .float-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+        }
+
+        .float-text p {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 5%;
+            background: var(--color-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            color: var(--color-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text-dark);
+        }
+
+        .section-description {
+            font-size: 1.05rem;
+            color: var(--color-text-medium);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--color-bg-main);
+            padding: 2.5rem 2rem;
+            border-radius: 25px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(45, 138, 110, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, rgba(45, 138, 110, 0.1), rgba(74, 144, 217, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-blue));
+        }
+
+        .service-icon svg {
+            width: 35px;
+            height: 35px;
+            stroke: var(--color-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .service-icon svg {
+            stroke: var(--color-white);
+        }
+
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--color-text-dark);
+        }
+
+        .service-text {
+            color: var(--color-text-medium);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-price span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-orange);
+        }
+
+        .service-price small {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 5%;
+            background: var(--color-bg-main);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--color-white);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .portfolio-item:nth-child(1) {
+            grid-column: span 2;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-item:nth-child(1) img {
+            height: 350px;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(44, 62, 80, 0.9), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-size: 0.75rem;
+            border-radius: 15px;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .portfolio-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 5%;
+            background: var(--color-white);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--color-bg-main);
+            border-radius: 20px;
+            transition: var(--transition-smooth);
+        }
+
+        .feature-card:hover {
+            background: var(--color-white);
+            box-shadow: var(--shadow-hover);
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--color-white);
+        }
+
+        .feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+        }
+
+        .feature-content p {
+            font-size: 0.9rem;
+            color: var(--color-text-medium);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            color: var(--color-white);
+        }
+
+        .booking-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .booking-list {
+            list-style: none;
+        }
+
+        .booking-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        .booking-list li svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-orange);
+            flex-shrink: 0;
+        }
+
+        .booking-form {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-text-medium);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: var(--color-bg-main);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            color: var(--color-text-dark);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: var(--color-white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--color-orange), var(--color-orange-light));
+            color: var(--color-white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            margin-top: 0.5rem;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 166, 35, 0.4);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 6rem 5%;
+            background: var(--color-bg-main);
+        }
+
+        .map-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--color-text-dark);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--color-white);
+            border-radius: 18px;
+            transition: var(--transition-smooth);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .contact-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-white);
+        }
+
+        .contact-details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--color-text-dark);
+        }
+
+        .contact-details p {
+            color: var(--color-text-medium);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .map-wrapper {
+            height: 450px;
+            background: var(--color-white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5% 2rem;
+            background: var(--color-text-dark);
+            color: var(--color-white);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-brand .logo-text {
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover {
+            background: var(--color-primary);
+        }
+
+        .footer-social svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-white);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--color-white);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            font-weight: 300;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--color-primary-light);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .hero-float-card {
+                left: 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-item:nth-child(1) {
+                grid-column: span 2;
+            }
+
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .hero-image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image-item:first-child img,
+            .hero-image-item:not(:first-child) img {
+                height: 200px;
+            }
+
+            .hero-float-card {
+                display: none;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item:nth-child(1) {
+                grid-column: span 1;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Pattern Background -->
+    <div class="pattern-bg"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+            <span class="logo-text">温馨<span>家园</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#services">服务项目</a></li>
+            <li><a href="#portfolio">服务案例</a></li>
+            <li><a href="#features">服务保障</a></li>
+            <li><a href="#booking">在线预约</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+        <a href="#booking" class="nav-cta">立即预约</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    专业家政服务品牌
+                </div>
+                <h1 class="hero-title">让家更温馨<br><span>让生活更美好</span></h1>
+                <p class="hero-description">
+                    专业家政服务团队，标准化服务流程，为您的家庭提供全方位的清洁、护理、管家服务。让专业的人做专业的事，把时间留给家人。
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">年行业经验</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50000+</div>
+                        <div class="stat-label">服务家庭</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">客户满意度</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#booking" class="btn-primary">免费咨询</a>
+                    <a href="#services" class="btn-secondary">了解服务</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-grid">
+                    <div class="hero-image-item">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80" alt="家政清洁服务">
+                    </div>
+                    <div class="hero-image-item">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="家居护理">
+                    </div>
+                    <div class="hero-image-item">
+                        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=400&q=80" alt="家庭保洁">
+                    </div>
+                </div>
+                <div class="hero-float-card">
+                    <div class="float-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="float-text">
+                        <h4>品质保障</h4>
+                        <p>不满意免费返工</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header fade-in">
+            <p class="section-label">Our Services</p>
+            <h2 class="section-title">专业服务项目</h2>
+            <p class="section-description">全方位家政服务，满足您的各种家庭需求</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">家庭保洁</h3>
+                <p class="service-text">日常保洁、深度清洁、开荒保洁，让您的家焕然一新</p>
+                <div class="service-price">
+                    <span>¥80</span>
+                    <small>/小时起</small>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">月嫂保姆</h3>
+                <p class="service-text">专业月嫂、育儿嫂、住家保姆，贴心照顾每一位家庭成员</p>
+                <div class="service-price">
+                    <span>¥6800</span>
+                    <small>/月起</small>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">老人护理</h3>
+                <p class="service-text">专业护工、居家养老、陪护服务，让老人安享晚年</p>
+                <div class="service-price">
+                    <span>¥150</span>
+                    <small>/天起</small>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="3" y1="9" x2="21" y2="9"/>
+                        <line x1="9" y1="21" x2="9" y2="9"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">家电清洗</h3>
+                <p class="service-text">空调、油烟机、洗衣机等专业清洗，延长家电使用寿命</p>
+                <div class="service-price">
+                    <span>¥120</span>
+                    <small>/台起</small>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">家庭管家</h3>
+                <p class="service-text">高端家庭管家服务，统筹管理家庭事务，提升生活品质</p>
+                <div class="service-price">
+                    <span>¥8000</span>
+                    <small>/月起</small>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">母婴护理</h3>
+                <p class="service-text">新生儿护理、产后康复、母乳喂养指导，专业呵护母婴健康</p>
+                <div class="service-price">
+                    <span>¥12800</span>
+                    <small>/月起</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header fade-in">
+            <p class="section-label">Our Portfolio</p>
+            <h2 class="section-title">服务案例展示</h2>
+            <p class="section-description">每一次服务都是对品质的承诺</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="别墅深度清洁">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">深度清洁</span>
+                    <h3 class="portfolio-title">别墅全屋深度清洁</h3>
+                    <p class="portfolio-desc">500㎡别墅 · 8小时深度清洁 · 焕然一新</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=600&q=80" alt="厨房清洁">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">厨房清洁</span>
+                    <h3 class="portfolio-title">油烟机深度清洗</h3>
+                    <p class="portfolio-desc">专业设备 · 高温蒸汽消毒</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1584811644165-33db3b146db5?w=600&q=80" alt="老人护理">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">老人护理</span>
+                    <h3 class="portfolio-title">居家养老陪护</h3>
+                    <p class="portfolio-desc">24小时专业陪护 · 家人放心</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&q=80" alt="母婴护理">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">母婴护理</span>
+                    <h3 class="portfolio-title">金牌月嫂服务</h3>
+                    <p class="portfolio-desc">新生儿护理 · 产后康复指导</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80" alt="开荒保洁">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">开荒保洁</span>
+                    <h3 class="portfolio-title">新居开荒清洁</h3>
+                    <p class="portfolio-desc">120㎡新房 · 装修后开荒</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header fade-in">
+                <p class="section-label">Why Choose Us</p>
+                <h2 class="section-title">为什么选择我们</h2>
+                <p class="section-description">专业、可靠、贴心，让家政服务更放心</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>员工背景审查</h3>
+                        <p>所有服务人员均经过严格背景调查，持证上岗，让您安心放心</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>准时上门服务</h3>
+                        <p>准时到达，不耽误您的宝贵时间，服务过程透明可追踪</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>品质保障承诺</h3>
+                        <p>不满意免费返工，服务质量有保障，让您无后顾之忧</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                            <line x1="1" y1="10" x2="23" y2="10"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>保险保障</h3>
+                        <p>为每次服务购买保险，意外损坏有保障，服务更安心</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>专业培训体系</h3>
+                        <p>定期专业培训，提升服务技能，确保服务质量</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>7×24小时客服</h3>
+                        <p>全天候客服支持，随时解答您的疑问，快速响应需求</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="booking-container">
+            <div class="booking-content fade-in">
+                <h2>在线预约<br>享受专业服务</h2>
+                <p>填写您的需求信息，我们将在30分钟内与您联系，为您安排最合适的服务人员。</p>
+                <ul class="booking-list">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        免费上门评估，精准报价
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        灵活预约时间，随您安排
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        满意后付款，无后顾之忧
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        专属客服跟进，全程无忧
+                    </li>
+                </ul>
+            </div>
+            <form class="booking-form fade-in" id="bookingForm">
+                <h3 class="form-title">预约咨询</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">您的姓名</label>
+                        <input type="text" id="name" name="name" placeholder="请输入姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">联系电话</label>
+                        <input type="tel" id="phone" name="phone" placeholder="请输入手机号" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service">服务类型</label>
+                        <select id="service" name="service">
+                            <option value="">请选择服务类型</option>
+                            <option value="cleaning">家庭保洁</option>
+                            <option value="nanny">月嫂保姆</option>
+                            <option value="elderly">老人护理</option>
+                            <option value="appliance">家电清洗</option>
+                            <option value="butler">家庭管家</option>
+                            <option value="maternity">母婴护理</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="area">房屋面积</label>
+                        <input type="text" id="area" name="area" placeholder="例如：120㎡">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">服务地址</label>
+                    <input type="text" id="address" name="address" placeholder="请输入详细地址">
+                </div>
+                <div class="form-group">
+                    <label for="message">备注说明</label>
+                    <textarea id="message" name="message" placeholder="请描述您的具体需求或特殊要求"></textarea>
+                </div>
+                <button type="submit" class="form-submit">提交预约</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="contact">
+        <div class="section-header fade-in">
+            <p class="section-label">Contact Us</p>
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-description">欢迎来电咨询，我们将竭诚为您服务</p>
+        </div>
+        <div class="map-container">
+            <div class="contact-info fade-in">
+                <h3>联系方式</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>公司地址</h4>
+                        <p>北京市朝阳区建国路88号<br>现代城写字楼A座12层</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>服务热线</h4>
+                        <p>400-888-6666<br>010-8888-6666</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>营业时间</h4>
+                        <p>周一至周日 8:00-20:00<br>全年无休</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>电子邮箱</h4>
+                        <p>service@wenxinjiayuan.com<br>hr@wenxinjiayuan.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-wrapper fade-in">
+                <iframe src="https://map.baidu.com/@12956542.36,4837283.67,12z" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-text">温馨<span style="color: var(--color-primary-light);">家园</span></span>
+                <p>温馨家园家政服务有限公司，专注家政服务10余年。我们秉承"专业、诚信、贴心"的服务理念，为万千家庭提供高品质的家政服务。</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="微信">
+                        <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 01-.023-.156.49.49 0 01.201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-7.062-6.122zm-2.036 2.96c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+                    </a>
+                    <a href="#" aria-label="微博">
+                        <svg viewBox="0 0 24 24"><path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.601.622.263.82.972.442 1.592zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.313-.361-.177-.586.138-.227.436-.346.672-.24.239.09.315.36.194.573zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.64 4.318-.341 5.132-2.179.8-1.793-.201-3.642-2.161-4.149zm7.563-1.224c-.346-.105-.579-.18-.405-.649.388-1.032.428-1.922.008-2.556-.786-1.187-2.93-1.124-5.369-.032 0 0-.769.334-.573-.271.378-1.2.32-2.206-.268-2.787-1.334-1.318-4.881.048-7.921 3.051C1.455 10.36 0 12.726 0 14.775c0 3.917 5.021 6.299 9.937 6.299 6.433 0 10.712-3.738 10.712-6.707 0-1.795-1.514-2.816-2.59-3.218zm2.86-5.378c-.793-.877-1.962-1.271-3.003-1.094-.224.038-.373.25-.335.473.038.224.25.373.473.335.727-.123 1.539.153 2.093.767.553.613.732 1.443.501 2.148-.072.217.046.452.263.524.217.072.452-.046.524-.263.322-.988.07-2.143-.516-2.89zm1.048-2.517c-1.314-1.454-3.251-1.975-4.98-1.531-.223.057-.358.283-.301.506.057.223.283.358.506.301 1.415-.364 2.99.063 4.067 1.254 1.076 1.19 1.328 2.802.818 4.168-.079.214.03.452.244.531.214.079.452-.03.531-.244.629-1.688.316-3.68-.885-4.985z"/></svg>
+                    </a>
+                    <a href="#" aria-label="抖音">
+                        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>服务项目</h4>
+                <ul>
+                    <li><a href="#">家庭保洁</a></li>
+                    <li><a href="#">月嫂保姆</a></li>
+                    <li><a href="#">老人护理</a></li>
+                    <li><a href="#">家电清洗</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">公司简介</a></li>
+                    <li><a href="#">服务团队</a></li>
+                    <li><a href="#">荣誉资质</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>客户服务</h4>
+                <ul>
+                    <li><a href="#">在线预约</a></li>
+                    <li><a href="#">服务保障</a></li>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">投诉建议</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 温馨家园家政服务有限公司 版权所有 | 京ICP备12345678号</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('预约成功！我们将在30分钟内与您联系确认。');
+            this.reset();
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+<!-- AIGC: {"Label":"value1","ContentProducer":"001191110000802100433B11010001191110000802100433B11010","ProduceID":"4e7ae209-6f60-4954-b2b8-eb0f00056540","ReservedCode1":"72dafc97cd38b92e5f3d5cdfd0dfbbe6","ContentPropagator":"001191110000802100433B11010001191110000802100433B11010","PropagateID":"22e27091-92cd-4395-8084-625aabc72fed","ReservedCode2":"2734827274df537123a472bf4de01eb5"} -->
+</body>
+</html>
